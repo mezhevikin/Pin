@@ -14,9 +14,9 @@ public final class Pin {
     public var constrains = [NSLayoutConstraint]()
     
     public func add(
-        to: UIView? = nil,
         attr attr1: NSLayoutConstraint.Attribute,
         relation: NSLayoutConstraint.Relation = .equal,
+        to: UIView? = nil,
         attr attr2: NSLayoutConstraint.Attribute? = nil,
         constant: CGFloat = 0,
         priority: UILayoutPriority = .required,
@@ -42,23 +42,23 @@ public final class Pin {
     }
     
     public func left(_ to: UIView? = nil, offset: CGFloat = 0, safe: Bool = false) -> Self {
-        add(to: to, attr: .leading, constant: offset, safe: safe)
+        add(attr: .leading, to: to, constant: offset, safe: safe)
     }
     
     public func right(_ to: UIView? = nil, offset: CGFloat = 0, safe: Bool = false) -> Self {
-        add(to: to, attr: .trailing, constant: offset, safe: safe)
+        add(attr: .trailing, to: to, constant: offset, safe: safe)
     }
     
     public func top(_ to: UIView? = nil, offset: CGFloat = 0, safe: Bool = false) -> Self {
-        add(to: to, attr: .top, constant: offset, safe: safe)
+        add(attr: .top, to: to, constant: offset, safe: safe)
     }
     
     public func bottom(_ to: UIView? = nil, offset: CGFloat = 0, safe: Bool = false) -> Self {
-        add(to: to, attr: .bottom, constant: offset, safe: safe)
+        add(attr: .bottom, to: to, constant: offset, safe: safe)
     }
     
     public func width(_ to: UIView) -> Self {
-        add(to: to, attr: .width)
+        add(attr: .width, to: to)
     }
     
     public func width(_ width: CGFloat) -> Self {
@@ -66,7 +66,7 @@ public final class Pin {
     }
     
     public func height(_ to: UIView) -> Self {
-        add(to: to, attr: .height)
+        add(attr: .height, to: to)
     }
     
     public func height(_ height: CGFloat) -> Self {
@@ -78,11 +78,11 @@ public final class Pin {
     }
     
     public func centerX(_ to: UIView? = nil) -> Self {
-        add(to: to, attr: .centerX)
+        add(attr: .centerX, to: to)
     }
             
     public func centerY(_ to: UIView? = nil) -> Self {
-        add(to: to, attr: .centerY)
+        add(attr: .centerY, to: to)
     }
     
     public func center(_ to: UIView? = nil) -> Self {
@@ -90,19 +90,19 @@ public final class Pin {
     }
     
     public func after(_ to: UIView, offset: CGFloat = 0) -> Self {
-        add(to: to, attr: .leading, attr: .trailing, constant: offset)
+        add(attr: .leading, to: to, attr: .trailing, constant: offset)
     }
     
     public func before(_ to: UIView, offset: CGFloat = 0) -> Self {
-        add(to: to, attr: .trailing, attr: .leading, constant: offset)
+        add(attr: .trailing, to: to, attr: .leading, constant: offset)
     }
     
     public func below(_ to: UIView, offset: CGFloat = 0) -> Self {
-        add(to: to, attr: .top, attr: .bottom, constant: offset)
+        add(attr: .top, to: to, attr: .bottom, constant: offset)
     }
     
     public func above(_ to: UIView, offset: CGFloat = 0) -> Self {
-        add(to: to, attr: .bottom, attr: .top, constant: offset)
+        add(attr: .bottom, to: to, attr: .top, constant: offset)
     }
     
     public func horizontal(_ to: UIView? = nil, offset: CGFloat = 0) -> Self {
