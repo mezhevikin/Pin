@@ -41,11 +41,11 @@ public final class Pin {
         return self
     }
     
-    public func left(_ to: UIView? = nil, offset: CGFloat = 0, safe: Bool = false) -> Self {
+    public func start(_ to: UIView? = nil, offset: CGFloat = 0, safe: Bool = false) -> Self {
         add(attr: .leading, to: to, constant: offset, safe: safe)
     }
     
-    public func right(_ to: UIView? = nil, offset: CGFloat = 0, safe: Bool = false) -> Self {
+    public func end(_ to: UIView? = nil, offset: CGFloat = 0, safe: Bool = false) -> Self {
         add(attr: .trailing, to: to, constant: offset, safe: safe)
     }
     
@@ -105,16 +105,16 @@ public final class Pin {
         add(attr: .bottom, to: to, attr: .top, constant: offset)
     }
     
-    public func horizontal(_ to: UIView? = nil, offset: CGFloat = 0) -> Self {
-        left(to, offset: offset).right(to, offset: -offset)
+    public func horizontally(_ to: UIView? = nil, offset: CGFloat = 0) -> Self {
+        start(to, offset: offset).end(to, offset: -offset)
     }
     
-    public func vertical(_ to: UIView? = nil, offset: CGFloat = 0) -> Self {
+    public func vertically(_ to: UIView? = nil, offset: CGFloat = 0) -> Self {
         top(to, offset: offset).bottom(to, offset: -offset)
     }
     
     public func all(_ to: UIView? = nil, offset: CGFloat = 0) -> Self {
-        vertical(to, offset: offset).horizontal(to, offset: offset)
+        vertically(to, offset: offset).horizontally(to, offset: offset)
     }
     
     public func prority(_ priority: UILayoutPriority) -> Self {
@@ -164,8 +164,8 @@ public extension UIView {
     ) {
         addSubview(body)
         body.pin
-            .left(offset: insets.left, safe: safe)
-            .right(offset: -insets.right, safe: safe)
+            .start(offset: insets.left, safe: safe)
+            .end(offset: -insets.right, safe: safe)
             .top(offset: insets.top, safe: safe)
             .bottom(offset: -insets.bottom, safe: safe)
             .activate()
