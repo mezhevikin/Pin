@@ -62,7 +62,7 @@ public final class Pin {
     }
     
     public func width(_ width: CGFloat) -> Self {
-        add(view.heightAnchor.constraint(equalToConstant: width))
+        add(view.widthAnchor.constraint(equalToConstant: width))
     }
     
     public func height(_ to: UIView) -> Self {
