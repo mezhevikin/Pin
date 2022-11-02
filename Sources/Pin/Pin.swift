@@ -41,20 +41,20 @@ public final class Pin {
         return self
     }
     
-    public func left(_ to: UIView? = nil, offset: CGFloat = 0) -> Self {
-        add(to: to, attr: .leading, constant: offset)
+    public func left(_ to: UIView? = nil, offset: CGFloat = 0, safe: Bool = false) -> Self {
+        add(to: to, attr: .leading, constant: offset, safe: safe)
     }
     
-    public func right(_ to: UIView? = nil, offset: CGFloat = 0) -> Self {
-        add(to: to, attr: .trailing, constant: offset)
+    public func right(_ to: UIView? = nil, offset: CGFloat = 0, safe: Bool = false) -> Self {
+        add(to: to, attr: .trailing, constant: offset, safe: safe)
     }
     
-    public func top(_ to: UIView? = nil, offset: CGFloat = 0) -> Self {
-        add(to: to, attr: .top, constant: offset)
+    public func top(_ to: UIView? = nil, offset: CGFloat = 0, safe: Bool = false) -> Self {
+        add(to: to, attr: .top, constant: offset, safe: safe)
     }
     
-    public func bottom(_ to: UIView? = nil, offset: CGFloat = 0) -> Self {
-        add(to: to, attr: .bottom, constant: offset)
+    public func bottom(_ to: UIView? = nil, offset: CGFloat = 0, safe: Bool = false) -> Self {
+        add(to: to, attr: .bottom, constant: offset, safe: safe)
     }
     
     public func width(_ to: UIView) -> Self {
@@ -164,10 +164,10 @@ public extension UIView {
     ) {
         addSubview(body)
         body.pin
-            .add(attr: .leading, constant: insets.left, safe: safe)
-            .add(attr: .trailing, constant: -insets.right, safe: safe)
-            .add(attr: .top, constant: insets.top, safe: safe)
-            .add(attr: .bottom, constant: -insets.bottom, safe: safe)
+            .left(offset: insets.left, safe: safe)
+            .right(offset: -insets.right, safe: safe)
+            .top(offset: insets.top, safe: safe)
+            .bottom(offset: -insets.bottom, safe: safe)
             .activate()
     }
     
