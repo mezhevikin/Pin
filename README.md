@@ -35,18 +35,18 @@ class CurrencyCell: UITableViewCell {
 ```
 
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/973364/199712248-f1be4027-7c73-4c3a-98e2-383c8a2b8150.jpg" width="320">
+    <img src="https://user-images.githubusercontent.com/973364/199716786-3ba59b9e-1efa-4241-80e2-0fc54dfaf9c1.jpg" width="320">
 </p>
 
 [Full code](https://github.com/mezhevikin/PinExample/blob/master/PinExample/CurrencyCell.swift)
 
 
-### Activation
+### Activate and deactivate
 
 ```swift
-let pin = titleLabel.pin.top()
-pin.activate()
-pin.deactivate()
+let top = titleLabel.pin.top()
+top.activate()
+top.deactivate()
 ```
 
 Activation array of constrains is more efficient than activating each constraint individually.
@@ -69,12 +69,10 @@ titleLabel.pin
     .end().priority(.defaultLow)
 
 // Set priority for all constrains
-titleLabel.pin.
-    start().end().priorityForAll(.defaultHeight)
+titleLabel.pin.start().end().priorityForAll(.defaultHeight)
 ```
 
-
-### Access to NSLayoutConstrains
+### Access to NSLayoutConstrain
 
 ```swift
 let start = titleLabel.start().constrains.last
@@ -84,9 +82,7 @@ start.isActive = true
 
 ### Right-to-Left languages
 
-Pin supports rtl languages by default.
-
-If you want to force direction then use:
+Pin supports rtl languages by default. If you want to force direction then use:
 
 ```swift
 semanticContentAttribute = .forceLeftToRight
