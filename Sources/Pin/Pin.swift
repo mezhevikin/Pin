@@ -11,7 +11,7 @@ public final class Pin {
         self.view = view
     }
     
-    public var constrains = [NSLayoutConstraint]()
+    public var constraints = [NSLayoutConstraint]()
     
     public func add(
         attr attr1: NSLayoutConstraint.Attribute,
@@ -23,7 +23,7 @@ public final class Pin {
         safe: Bool = false
     ) -> Self {
         let to = to ?? superview
-        let constrain = NSLayoutConstraint(
+        let constraint = NSLayoutConstraint(
             item: view,
             attribute: attr1,
             relatedBy: relation,
@@ -32,12 +32,12 @@ public final class Pin {
             multiplier: 1,
             constant: constant
         )
-        constrain.priority = priority
-        return add(constrain)
+        constraint.priority = priority
+        return add(constraint)
     }
     
     public func add(_ constraint: NSLayoutConstraint) -> Self {
-        constrains.append(constraint)
+        constraints.append(constraint)
         return self
     }
     
@@ -118,12 +118,12 @@ public final class Pin {
     }
     
     public func prorityForAll(_ priority: UILayoutPriority) -> Self {
-        constrains.forEach { $0.priority =  priority }
+        constraints.forEach { $0.priority =  priority }
         return self
     }
     
     public func prority(_ priority: UILayoutPriority) -> Self {
-        if let last = constrains.last { last.priority = priority }
+        if let last = constraints.last { last.priority = priority }
         return self
     }
     
@@ -135,19 +135,19 @@ public final class Pin {
     }
     
     public func activate() {
-        NSLayoutConstraint.activate(constrains)
+        NSLayoutConstraint.activate(constraints)
     }
     
     public func deactivate() {
-        NSLayoutConstraint.deactivate(constrains)
+        NSLayoutConstraint.deactivate(constraints)
     }
     
     public static func activate(_ all: [Pin]) {
-        NSLayoutConstraint.activate(all.flatMap { $0.constrains })
+        NSLayoutConstraint.activate(all.flatMap { $0.constraints })
     }
     
     public static func deactivate(_ all: [Pin]) {
-        NSLayoutConstraint.deactivate(all.flatMap { $0.constrains })
+        NSLayoutConstraint.deactivate(all.flatMap { $0.constraints })
     }
     
 }

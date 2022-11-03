@@ -49,7 +49,7 @@ top.activate()
 top.deactivate()
 ```
 
-Activation array of constrains is more efficient than activating each constraint individually.
+Activation array of constraints is more efficient than activating each constraint individually.
 
 ```swift
 Pin.activate([
@@ -90,19 +90,19 @@ override func viewDidLoad() {
 ### Priority
 
 ```swift
-// Set priority for each constrain
+// Set priority for each constraint
 titleLabel.pin
     .start().priority(.defaultHeight)
     .end().priority(.defaultLow)
 
-// Set priority for all constrains
+// Set priority for all constraints
 titleLabel.pin.start().end().priorityForAll(.defaultHeight)
 ```
 
-### Access to NSLayoutConstrain
+### Access to NSLayoutConstraint
 
 ```swift
-let start = titleLabel.pin.start().constrains.last
+let start = titleLabel.pin.start().constraints.last
 start.constant = 30
 start.isActive = true
 ```
