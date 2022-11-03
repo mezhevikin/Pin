@@ -4,7 +4,7 @@
 
 A library for those who don't want to use big libraries like SnapKit, but the standard NSLayoutConstraint creation seems too verbose.
 
-### Example
+### Example with Pin
 
 ```swift
 import UIKit
@@ -38,8 +38,59 @@ class CurrencyCell: UITableViewCell {
     <img src="https://user-images.githubusercontent.com/973364/199716786-3ba59b9e-1efa-4241-80e2-0fc54dfaf9c1.jpg" width="320">
 </p>
 
-[Full code](https://github.com/mezhevikin/PinExample/blob/master/PinExample/CurrencyCell.swift)
+[Original code](https://github.com/mezhevikin/PinExample/blob/master/PinExample/CurrencyCell.swift)
 
+<details>
+<summary>Same code without Pin 🙀</summary>
+  
+```swift
+import UIKit
+
+class CurrencyCell: UITableViewCell {
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        bodyView.translatesAutoresizingMaskIntoConstraints = false
+        flagLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        codeLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.addSubview(bodyView)
+        bodyView.addSubview(flagLabel)
+        bodyView.addSubview(titleLabel)
+        bodyView.addSubview(codeLabel)
+        
+        NSLayoutConstraint.activate([
+            bodyView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+            bodyView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            bodyView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            bodyView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            flagLabel.leadingAnchor.constraint(equalTo: bodyView.leadingAnchor),
+            flagLabel.centerYAnchor.constraint(equalTo: bodyView.centerYAnchor),
+            flagLabel.widthAnchor.constraint(equalToConstant: 36),
+            flagLabel.heightAnchor.constraint(equalToConstant: 36),
+            
+            titleLabel.leadingAnchor.constraint(equalTo: flagLabel.trailingAnchor, constant: 15),
+            titleLabel.topAnchor.constraint(equalTo: bodyView.topAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: bodyView.bottomAnchor),
+            
+            codeLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 15),
+            codeLabel.trailingAnchor.constraint(equalTo: bodyView.trailingAnchor),
+            codeLabel.topAnchor.constraint(equalTo: bodyView.topAnchor),
+            codeLabel.bottomAnchor.constraint(equalTo: bodyView.bottomAnchor)
+        ])
+    }
+    
+    let bodyView = UIView()
+    let flagLabel = UILabel()
+    let titleLabel = UILabel()
+    let codeLabel = UILabel() 
+    
+}
+```
+</details>
 
 ### Activate and deactivate
 
