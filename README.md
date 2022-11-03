@@ -87,7 +87,6 @@ override func viewDidLoad() {
 }
 ```
 
-
 ### Priority
 
 ```swift
@@ -108,7 +107,7 @@ start.constant = 30
 start.isActive = true
 ```
 
-### Right-to-Left languages
+### Right to left languages
 
 Pin supports rtl languages by default. If you want to force direction then use:
 
