@@ -117,10 +117,13 @@ public final class Pin {
         vertically(to, offset: offset).horizontally(to, offset: offset)
     }
     
+    public func prorityForAll(_ priority: UILayoutPriority) -> Self {
+        constrains.forEach { $0.priority =  priority }
+        return self
+    }
+    
     public func prority(_ priority: UILayoutPriority) -> Self {
-        if let last = constrains.last {
-            last.priority = priority
-        }
+        if let last = constrains.last { last.priority = priority }
         return self
     }
     
