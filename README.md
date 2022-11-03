@@ -107,6 +107,34 @@ start.constant = 30
 start.isActive = true
 ```
 
+### Extensions
+
+You can add own extensions:
+
+```swift
+extension Pin {
+    
+    public func horizontallyBetween(
+        _ first: UIView,
+        _ second: UIView,
+        offset: CGFloat = 0
+    ) -> Self {
+        self.after(first, offset: offset)
+            .before(second, offset: -offset)
+    }
+    
+    public func verticallyBetween(
+        _ first: UIView,
+        _ second: UIView,
+        offset: CGFloat = 0
+    ) -> Self {
+        self.add(attr: .top, to: first, attr: .bottom, constant: offset)
+            .add(attr: .bottom, to: second, attr: .top, constant: -offset)
+    }
+    
+}
+```
+
 ### Right to left languages
 
 Pin supports rtl languages by default. If you want to force direction then use:
