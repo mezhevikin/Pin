@@ -4,7 +4,7 @@
 
 A library for those who don't want to use big libraries like SnapKit, but the standard NSLayoutConstraint creation seems too verbose.
 
-### Example with Pin
+### Example with Pin 😸
 
 ```swift
 import UIKit
@@ -40,9 +40,8 @@ class CurrencyCell: UITableViewCell {
 
 [Original code](https://github.com/mezhevikin/PinExample/blob/master/PinExample/CurrencyCell.swift)
 
-<details>
-<summary>Same code without Pin 🙀</summary>
-  
+### Example without Pin 🙀
+
 ```swift
 import UIKit
 
@@ -90,7 +89,6 @@ class CurrencyCell: UITableViewCell {
     
 }
 ```
-</details>
 
 ### Activate and deactivate
 
