@@ -34,6 +34,10 @@ class CurrencyCell: UITableViewCell {
 }
 ```
 
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/973364/199712248-f1be4027-7c73-4c3a-98e2-383c8a2b8150.jpg" width="320">
+</p>
+
 [Full code](https://github.com/mezhevikin/PinExample/blob/master/PinExample/CurrencyCell.swift)
 
 
