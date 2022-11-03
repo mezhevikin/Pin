@@ -60,6 +60,34 @@ Pin.activate([
 ])
 ```
 
+### Safe area
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    view.addSubView(toolBar)
+    toolBar.pin
+        .top(safe: true)
+        .horizontally()
+        .height(55)
+        .activate()
+}
+```
+
+Add body to safe area with insets 15 pixels.
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    view.addBody(
+        contentView,
+        safe: true,
+        insets: .all(15)
+    )
+}
+```
+
+
 ### Priority
 
 ```swift
@@ -75,7 +103,7 @@ titleLabel.pin.start().end().priorityForAll(.defaultHeight)
 ### Access to NSLayoutConstrain
 
 ```swift
-let start = titleLabel.start().constrains.last
+let start = titleLabel.pin.start().constrains.last
 start.constant = 30
 start.isActive = true
 ```
