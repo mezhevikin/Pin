@@ -89,6 +89,74 @@ class CurrencyCell: UITableViewCell {
     
 }
 ```
+### Methods
+
+```swift
+// titleLabel.leading == titleLabel.superview.leading
+// Use addSubview(titleLabel) before it
+titleLabel.pin.start()
+
+// titleLabel.leading == iconView.leading
+titleLabel.pin.start(iconView)
+
+// titleLabel.leading == iconView.leading + 10
+titleLabel.pin.start(iconView, offset: 10)
+
+// titleLabel.leading == titleLabel.superview.safeAreaLayoutGuide.leading
+titleLabel.pin.start(safe: true)
+
+// titleLabel.trailing == titleLabel.superview.trailing - 10
+titleLabel.pin.end(offset: -10)
+
+// titleLabel.top == titleLabel.superview.top
+titleLabel.pin.top()
+
+// titleLabel.bottom == titleLabel.superview.bottom
+titleLabel.pin.bottom()
+
+// titleLabel.leading == titleLabel.superview.leading + 10
+// titleLabel.trailing == titleLabel.superview.trailing - 10
+titleLabel.pin.horizontally(offset: 10)
+
+// titleLabel.top == titleLabel.superview.top
+// titleLabel.bottom == titleLabel.superview.bottom
+titleLabel.pin.vertically()
+
+// contentView.leading == contentView.superview.leading + 10
+// contentView.trailing == contentView.superview.trailing - 10
+// contentView.top == contentView.superview.top + 10
+// contentView.bottom == contentView.superview.bottom - 10
+contentView.all(offset: 10)
+
+// titleLabel.leading == iconView.trailing + 10
+titleLabel.pin.after(iconView, offset: 10)
+
+// iconView.trailing == titleLabel.leading - 10
+iconView.pin.before(titleLabel, offset: -10)
+
+// titleLabel.top == navigationBar.bottom + 10
+titleLabel.pin.below(navigationBar, offset: 10)
+
+// titleLabel.width == 200
+titleLabel.pin.width(200)
+
+// titleLabel.height == 20
+titleLabel.pin.height(20)
+
+// codeLabel.width == titleLabel.width
+codeLabel.pin.width(titleLabel)
+
+// codeLabel.height == titleLabel.height
+codeLabel.pin.height(titleLabel)
+
+// codeLabel.width <= titleLabel.width
+codeLabel.pin.add(
+    attr: .width,
+    relation: .lessThanOrEqual,
+    to: titleLabel,
+    attr: .width
+)
+```
 
 ### Activate and deactivate
 
@@ -116,24 +184,25 @@ override func viewDidLoad() {
     super.viewDidLoad()
     view.addSubView(toolBar)
     toolBar.pin
+        .start(safe: true)
+        .end(safe: true)
         .top(safe: true)
-        .horizontally()
         .height(55)
         .activate()
 }
 ```
 
-Add body to safe area with insets 15 pixels.
+### Body
 
 ```swift
-override func viewDidLoad() {
-    super.viewDidLoad()
-    view.addBody(
-        contentView,
-        safe: true,
-        insets: .all(15)
-    )
-}
+// Add body (bodyView fill view)
+view.addBody(bodyView)
+// Add body with safe area
+view.addBody(bodyView, safe: true)
+// Add body with insets 15
+view.addBody(bodyView, insets: .all(15))
+// Add body with horizontal insets 15
+view.addBody(bodyView, insets: .horizontal(15))
 ```
 
 ### Priority
@@ -186,7 +255,7 @@ extension Pin {
 
 ### Right to left languages
 
-Pin supports rtl languages by default. If you want to force direction then use:
+Methods `start(), end(), after(), before()` supports rtl languages by default. If you want to force direction then use:
 
 ```swift
 semanticContentAttribute = .forceLeftToRight
