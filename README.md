@@ -255,7 +255,7 @@ extension Pin {
 
 ### Right to left languages
 
-Methods `start(), end(), after(), before()` supports rtl languages by default. If you want to force direction then use:
+Methods `start(), end(), after(), before()` support rtl languages by default. If you want to force direction then use:
 
 ```swift
 semanticContentAttribute = .forceLeftToRight
